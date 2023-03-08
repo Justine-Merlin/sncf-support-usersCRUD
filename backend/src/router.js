@@ -13,5 +13,4 @@ router.delete("/items/:id", itemControllers.destroy);
 
 // routes for USER ressource
 
-
 module.exports = router;

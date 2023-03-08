@@ -1,27 +1,17 @@
 // Get all users
-const browse = () => {
-
-};
+const browse = () => {};
 
 // Get one user
-const read = () => {
-
-};
+const read = () => {};
 
 // Add new user
-const add = () => {
-
-};
+const add = () => {};
 
 // Update user's informations
-const update = () => {
-
-};
+const update = () => {};
 
 // Delete a user
-const destroy = () => {
-
-};
+const destroy = () => {};
 
 module.exports = {
   browse,
@@ -29,4 +19,4 @@ module.exports = {
   add,
   update,
   destroy,
-}
+};
