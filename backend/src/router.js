@@ -16,7 +16,9 @@ const { hashPassword } = require("./services/auth");
 
 // routes for USER ressource
 router.get("/users", userController.browse);
+router.get("/users/:id", userController.read);
+router.put("/users/:id", hashPassword, userController.update);
 router.post("/users", hashPassword, userController.add);
-// TODO: try to manage update, delete and read
+router.delete("/users/:id", userController.destroy);
 
 module.exports = router;
