@@ -85,10 +85,31 @@ const destroy = (req, res) => {
     });
 };
 
+// First step of the login, retrieve user informations by email sent in request
+const getUserByEmail = (req, res, next) => {
+  const loginInformations = req.body;
+
+  models.user
+    .findByEmail(loginInformations.email)
+    .then(([result]) => {
+      if (result.length !== 0) {
+        [req.user] = result;
+        next();
+      } else {
+        res.status(404).send("Bad email");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   add,
   update,
   destroy,
+  getUserByEmail,
 };

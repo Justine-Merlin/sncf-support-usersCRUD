@@ -12,13 +12,19 @@ router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
 const userController = require("./controllers/userControllers");
-const { hashPassword } = require("./services/auth");
+const {
+  hashPassword,
+  verifyPassword,
+  verifyToken,
+} = require("./services/auth");
 
 // routes for USER ressource
 router.get("/users", userController.browse);
-router.get("/users/:id", userController.read);
+router.get("/users/:id", verifyToken, userController.read);
 router.put("/users/:id", hashPassword, userController.update);
 router.post("/users", hashPassword, userController.add);
 router.delete("/users/:id", userController.destroy);
+
+router.post("/login", userController.getUserByEmail, verifyPassword);
 
 module.exports = router;
